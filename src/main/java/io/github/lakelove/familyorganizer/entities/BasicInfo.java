@@ -2,8 +2,12 @@ package io.github.lakelove.familyorganizer.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Entity;
@@ -14,15 +18,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
+import java.util.Objects;
 
-
-@Table(name = "BasicInfo")
 @AllArgsConstructor
 @Builder
-@NoArgsConstructor
-@ToString
 @Entity
-public class  BasicInfo {
+@Getter
+@NoArgsConstructor
+@Setter
+@Table(name = "BasicInfo")
+@ToString
+public class BasicInfo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,4 +42,14 @@ public class  BasicInfo {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdatedDate;
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true; if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+		BasicInfo basicInfo = (BasicInfo) o; return id != null && Objects.equals(id, basicInfo.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return getClass().hashCode();
+	}
 }
