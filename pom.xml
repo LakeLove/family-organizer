@@ -15,6 +15,8 @@
     <description>Family data organization project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
+        <springboot.version>2.5.5</springboot.version>
+        <lombok.version>1.18.22</lombok.version>
     </properties>
     <dependencies>
         <dependency>
@@ -57,7 +59,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-buildpack-platform</artifactId>
-            <version>2.5.5</version>
+            <version>${springboot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
@@ -84,8 +86,21 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>compile</scope>
-            <version>1.18.16</version>
+            <version>${lombok.version}</version>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>2.27.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -122,5 +137,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
