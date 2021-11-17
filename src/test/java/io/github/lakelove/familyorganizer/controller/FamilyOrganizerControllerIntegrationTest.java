@@ -37,7 +37,7 @@ public class FamilyOrganizerControllerIntegrationTest {
 
 	private BasicInfo basicInfo;
 
-	private ObjectMapper objectMapper = new ObjectMapper();
+	private final ObjectMapper objectMapper = new ObjectMapper();
 
 	@BeforeEach
 	void setUp() {
@@ -50,7 +50,7 @@ public class FamilyOrganizerControllerIntegrationTest {
 	}
 
 	@Test
-	public void saveFamilyMember() throws Exception {
+	public void saveFamilyMember_201() throws Exception {
 		String request = objectMapper.writeValueAsString(basicInfo);
 		String requestUrl = memberUrl + "/save";
 		stubFor(post(WireMock.urlEqualTo(requestUrl))

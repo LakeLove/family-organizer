@@ -12,6 +12,10 @@ public class FamilyOrganizerService {
 	@Autowired
 	FamilyOrganizerRepository familyOrganizerRepository;
 
+	public ResponseEntity<BasicInfo[]> findMembers(String firstName, String lastName) {
+		return null;
+	}
+
 	public ResponseEntity<BasicInfo> saveMember(BasicInfo basicInfo) {
 		familyOrganizerRepository.save(basicInfo);
 		return new ResponseEntity<>(HttpStatus.CREATED);
@@ -20,4 +24,5 @@ public class FamilyOrganizerService {
 	public ResponseEntity<BasicInfo> updateMember(BasicInfo basicInfo) {
 		return null;
 	}
+
 }
